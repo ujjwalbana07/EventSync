@@ -1,0 +1,2 @@
+This is a dummy resume for sanity testing.
+Skills: Python, React, Testing.
