@@ -1,0 +1,88 @@
+{% extends "sqladmin/list.html" %}
+
+{% block head_css %}
+{{ super() }}
+<style>
+  /* Toggle Switch CSS */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 20px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  input:checked+.slider {
+    background-color: #10b981;
+    /* Green */
+  }
+
+  input:checked+.slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+</style>
+{% endblock %}
+
+{% block body_scripts %}
+{{ super() }}
+<script>
+  async function toggleUserStatus(userId, isChecked) {
+    try {
+      const url = `/admin/users/${userId}/authorize?is_active=${isChecked}`;
+      console.log(`[Toggle] Calling ${url}`);
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      console.log(`[Toggle] Response: ${response.status}`);
+      if (response.ok) {
+        console.log(`User ${userId} status updated to ${isChecked}`);
+      } else {
+        console.error('Failed to update status');
+        alert('Failed to save status. Check console.');
+        // Revert toggle visually (simple reload for now)
+        location.reload();
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error updating status');
+    }
+  }
+</script>
+{% endblock %}
