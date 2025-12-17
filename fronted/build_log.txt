@@ -1,0 +1,26 @@
+
+> frontend@0.1.0 build
+> next build
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+   ▲ Next.js 14.1.0
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/app/admin/dashboard/page.tsx:29:20
+Type error: Cannot find name 'useRouter'. Did you mean 'router'?
+
+[0m [90m 27 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mAdminDashboard[39m() {[0m
+[0m [90m 28 |[39m     [36mconst[39m [events[33m,[39m setEvents] [33m=[39m useState[33m<[39m[33mEvent[39m[][33m>[39m([])[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 29 |[39m     [36mconst[39m router [33m=[39m useRouter()[33m;[39m[0m
+[0m [90m    |[39m                    [31m[1m^[22m[39m[0m
+[0m [90m 30 |[39m     [36mconst[39m [newEvent[33m,[39m setNewEvent] [33m=[39m useState({ title[33m:[39m [32m""[39m[33m,[39m description[33m:[39m [32m""[39m[33m,[39m capacity[33m:[39m [35m100[39m[33m,[39m date_time[33m:[39m [36mnew[39m [33mDate[39m()[33m.[39mtoISOString()[33m.[39mslice([35m0[39m[33m,[39m [35m16[39m)[33m,[39m location[33m:[39m [32m"TBD"[39m })[33m;[39m[0m
+[0m [90m 31 |[39m     [36mconst[39m [aiInvite[33m,[39m setAiInvite] [33m=[39m useState([32m""[39m)[33m;[39m[0m
+[0m [90m 32 |[39m     [36mconst[39m [selectedEvent[33m,[39m setSelectedEvent] [33m=[39m useState[33m<[39m[33mEvent[39m [33m|[39m [36mnull[39m[33m>[39m([36mnull[39m)[33m;[39m[0m
